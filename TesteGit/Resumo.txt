@@ -1,0 +1,70 @@
+Qual a idéia inicial?
+R:Criação de uma lâmpada com 2 botões de ligar e desligar,
+ao dar 2 cliques sob a lâmpada a mesma se quebrará,
+desativando as funções dos botões.
+
+Utilizei a "link rel="stylersheet" href="lampada.cc" para incluir o css na page html
+e utilizar para estilizar em um arquivo proprio.
+
+-Abaixo da tag body(corpo da Page), chamei a tag header para acrescentar meu cabeçalho.
+-H1 para nomear o cabeçalho
+-Criei um Main contendo 2 Divs com 1 imagem e 2 botões
+
+JS
+
+primeira função foi habilitar os botões 'ligar e desligar'
+const turnOn = document.getElementById ("turnOn");
+const turnOff = document.getElementById ("turnOff");
+
+logo em seguida peguei a lampada
+const lamp = document.getElementById ("lamp");
+
+agora preciso acrescentar uma função que me permita
+trocar as imagens sempre que eu clicar nos botões 
+
+function lampOn () {
+  if ( !isLampBroken () ) {
+    lamp.src ="./img/ligada.png";
+
+  }
+  
+  agora precisamos criar outra função que habilite desligar a lâmpada
+
+  function lampOff () {
+  if ( !isLampBroken () ) {
+  lamp.src ="./img/desligada.png";
+}
+}
+
+CRIAR FUNÇAO DESLIGAR LÂMPADA 
+function lampOff () {
+  if ( !isLampBroken () ) {
+  lamp.src ="./img/desligada.png";
+}
+}
+
+CRIANDO FUNÇÃO LÂMPADA QUEBRADA
+
+function lampBroken () {
+  lamp.src = "./img/quebrada.jpg";
+}
+
+
+FOI CRIADO POR ULTIMO UMA FUNÇÃO PARA SABER SE A LÂMPADA ESTÁ QUEBRADA OU NÃO
+POIS O INTUITO É APARTIR DO MOMENTO QUE A LÂMPADA ESTIVER QUEBRADA, TODA A FUNÇÃO DE LIGAR E DESLIGAR PARAR.
+
+function isLampBroken () {
+  return lamp.src.indexOf ("quebrada") > -1
+}
+
+
+os eventos serão criados logo apos as funções**
+
+
+
+
+turnOn.addEventListener ("click", lampOn ); EVENTO "LIGAR LÂMPADA"
+turnOff.addEventListener ("click",lampOff); EVENTO "DESLIGAR LÂMPADA"
+lamp.addEventListener ( "mouseover", lampOn); EVENTO PASSAR MOUSE POR CIMA LÂMPADA LIGA
+lamp.addEventListener ( "mouseleave", lampOff); EVENTO TIROU O MOUSE DA LÂMPADA A MESMA DESLIGA
+lamp.addEventListener ( "dblclick", lampBroken); EVENTO QUEBRAR LÂMPADA QUANDO DER 2 CLICKS.
